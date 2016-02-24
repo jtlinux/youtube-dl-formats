@@ -1,4 +1,4 @@
-# youtube-dl-format
+# youtube-dl-formats
 Search for and download a specific format with youtube-dl
 
 This script displays a YouTube video's available formats and asks the user to choose a format to download.
