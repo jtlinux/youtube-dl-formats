@@ -17,4 +17,4 @@ I'd be happy to receive help. I'm new to scripting. This is a script I wrote and
 
  - Replace xclip clipboard with a clipboard that retains more than one entry. (I would like to be able to search the clipboard for the most recent YouTube URL.)
  - Have youtube-dl download video information only once. (It currently downloads twice: once with `youtube-dl -F` command and again with `youtube-dl -f` command).
- - Supress messages from youtube-dl about the download of video information, while retaining format information from `-F`.
+ - Supress messages from youtube-dl about the download of video information, while still showing the format information from `-F`.
