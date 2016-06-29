@@ -14,9 +14,6 @@ youtube-dl -F -i $URL
 
 if [ "$?" = "1" ]; then
 
-	echo
-	echo "There was an error. Perhaps there is no URL on your clipboard."
-	echo "Exiting."
 	exit
 
 else
@@ -29,9 +26,6 @@ else
 
 	if [ "$?" = "1" ]; then
 
-		echo
-		echo "There was an error. Perhaps you didn't enter a valid format code."
-		echo "Exiting."
 		exit
 
 	else
