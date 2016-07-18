@@ -8,6 +8,7 @@ The user's most recent item on the xclip clipboard is used as input for the vide
 
  - youtube-dl
  - xclip
+ - vlc
 
 **My reasons for uploading this script:**
 
