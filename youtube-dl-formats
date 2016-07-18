@@ -3,6 +3,7 @@
 
 # This script displays a YouTube video's available formats and asks the user to choose a format to download.
 # The user's most recent item on the xclip clipboard is used as input for the video download commands.
+# Finally, VLC is used to play the file back at user's request.
 
 # xclip dumps out the clipboard selection
 URL=`xclip -o -selection clipboard`
@@ -14,27 +15,37 @@ youtube-dl -F -i $URL
 
 if [ "$?" = "1" ]; then
 
+	echo "Exiting."
 	exit
-
 else
 
-	echo
-	echo "Please enter the desired format code."
-	read FORMAT
-	# -f option downloads the specified format
-	youtube-dl -f $FORMAT $URL
+echo
+echo "Please enter the desired format code."
+read FORMAT
+echo "Initiating download using the following command:"
+echo youtube-dl --restrict-filenames -f $FORMAT $URL
+# -f option downloads the specified format
+youtube-dl --restrict-filenames -f $FORMAT $URL
 
-	if [ "$?" = "1" ]; then
+if [ "$?" = "1" ]; then
 
-		exit
+	echo "Exiting."
+	exit
+else
 
-	else
-
-	echo
-	echo "Initiating download using the following command:"
-	echo youtube-dl -f $FORMAT $URL
-	echo "Done."
-
-	fi
+# The command in FILENAME gets the filename, but needs to redownload info
+FILENAME=$PWD"/"`youtube-dl --restrict-filenames --get-filename -f $FORMAT $URL`
+echo "Done."
+echo
+while true; do
+    read -p "Would you like to play this file now? [y/N] " yn
+    case $yn in
+# Plays file with VLC silently, and prints filename
+        [Yy]* ) vlc $FILENAME > /dev/null 2>&1; echo "File is located at"; echo $FILENAME; break;;
+# Any non-yes answer, including an empty answer, is taken as a no; prints filename
+        * ) echo "File is located at"; echo $FILENAME; exit;;
+    esac
+done
+fi
 
 fi
