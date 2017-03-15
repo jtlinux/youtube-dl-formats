@@ -9,6 +9,8 @@ The user's most recent item on the xclip clipboard is used as input for the vide
  - youtube-dl
  - xclip
  - vlc
+ - paplay
+ - notify-send (lib-notify)
 
 **My reasons for uploading this script:**
 
