@@ -4,48 +4,53 @@
 # This script displays a YouTube video's available formats and asks the user to choose a format to download.
 # The user's most recent item on the xclip clipboard is used as input for the video download commands.
 # Finally, VLC is used to play the file back at user's request.
+# Alternatively, add a format to the command to download it (e.g. `youtube-dl-formats 43` will work as `youtube-dl -f 43`)
 
 # xclip dumps out the clipboard selection
 URL=`xclip -o -selection clipboard`
 
-echo "Checking available formats..."
+if [ ! -f $1 ];
 
-# -F option displays video's available formats without downloading
-youtube-dl -F -i $URL
+then
 
-if [ "$?" = "1" ]; then
+echo "Initiating download using the following command:"
+echo youtube-dl --restrict-filenames -f $1 $URL
+# -f option downloads the specified format
+youtube-dl --restrict-filenames -f $1 $URL
+# The command in FILENAME gets the filename, but needs to redownload info
+FILENAME=$PWD"/"`youtube-dl --restrict-filenames --get-filename -f $1 $URL`
+# Play a sound notification
+paplay /usr/share/sounds/freedesktop/stereo/complete.oga&
+# Display a notification in the noification area
+notify-send -i youtube-dl-gui "Finished.";
 
-	echo "Exiting."
-	exit
 else
 
-echo
+echo "Checking available formats..."
+# -F option displays video's available formats without downloading
+youtube-dl -F -i $URL
 echo "Please enter the desired format code."
+paplay /usr/share/sounds/freedesktop/stereo/dialog-information.oga&
+notify-send -i youtube-dl-gui "Waiting for input."
 read FORMAT
 echo "Initiating download using the following command:"
 echo youtube-dl --restrict-filenames -f $FORMAT $URL
 # -f option downloads the specified format
 youtube-dl --restrict-filenames -f $FORMAT $URL
-
-if [ "$?" = "1" ]; then
-
-	echo "Exiting."
-	exit
-else
-
 # The command in FILENAME gets the filename, but needs to redownload info
 FILENAME=$PWD"/"`youtube-dl --restrict-filenames --get-filename -f $FORMAT $URL`
+paplay /usr/share/sounds/freedesktop/stereo/complete.oga&
+notify-send -i youtube-dl-gui "Finished.";
+
+fi
+
 echo "Done."
-echo
 while true; do
     read -p "Would you like to play this file now? [y/N] " yn
     case $yn in
-# Plays file with VLC silently, and prints filename
-        [Yy]* ) vlc $FILENAME > /dev/null 2>&1; echo "File is located at"; echo $FILENAME; break;;
+# Plays file with VLC, and prints filename
 # Any non-yes answer, including an empty answer, is taken as a no; prints filename
+        [Yy]* ) vlc $FILENAME > /dev/null 2>&1; echo "File is located at"; echo $FILENAME; break;;
         * ) echo "File is located at"; echo $FILENAME; exit;;
     esac
 done
-fi
-
-fi
