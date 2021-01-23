@@ -19,7 +19,7 @@ I'd be happy to receive help. I'm new to scripting. This is a script I wrote and
 
 **TO-DO:**
 
- - [HIGH] Check that a YouTube video URL exists on the clipboard before attempting to fetch format information. Return an error and exit if URL does not exist in clipboard.
+ - [HIGH priority] Check that a YouTube video URL exists on the clipboard before attempting to fetch format information. Return an error and exit if URL does not exist in clipboard.
  - [LOW] Replace xclip clipboard with a clipboard that retains more than one entry. (I would like to be able to search the clipboard for the most recent YouTube URL.)
  - [LOW] Have youtube-dl download video information only once. (It currently downloads twice: once with `youtube-dl -F` command and again with `youtube-dl -f` command).
  - [LOW] Supress messages from youtube-dl about the download of video information, while still showing the format information from `-F`.
