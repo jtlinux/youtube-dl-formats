@@ -5,6 +5,7 @@
 # The user's most recent item on the xclip clipboard is used as input for the video download commands.
 # Finally, VLC is used to play the file back at user's request.
 # Alternatively, add a format to the command to download it (e.g. `youtube-dl-formats 43` will work as `youtube-dl -f 43`)
+# Dependencies: youtube-dl, xclip, vlc, paplay, notify-send (libnotify-bin)
 
 # xclip dumps out the clipboard selection
 URL=`xclip -o -selection clipboard`
