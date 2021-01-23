@@ -17,7 +17,7 @@ Alternatively, add a format to the command to download it (e.g. `youtube-dl-form
 
 I'd be happy to receive help. I'm new to scripting. This is a script I wrote and have recently been working on because I personally use it often. I often have to download videos or audio for work or personal use. I have very limited bandwidth, which makes downloading preferable to streaming, and it also makes format selection essential.
 
-**TO-DO:**
+**TO-CODE/WISH LIST:**
 
  - [HIGH priority] Check that a YouTube video URL exists on the clipboard before attempting to fetch format information. Return an error and exit if URL does not exist in clipboard.
  - [LOW] Replace xclip clipboard with a clipboard that retains more than one entry. (I would like to be able to search the clipboard for the most recent YouTube URL.)
