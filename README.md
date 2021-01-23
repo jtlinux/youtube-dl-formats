@@ -1,8 +1,9 @@
 # youtube-dl-formats
 Search for and download a specific format with youtube-dl
 
-This script displays a YouTube video's available formats and asks the user to choose a format to download.</br>
+This script displays a YouTube video's available formats and asks the user to choose a format to download.
 The user's most recent item on the xclip clipboard is used as input for the video download commands.
+Alternatively, add a format to the command to download it (e.g. `youtube-dl-formats 43` will work as `youtube-dl -f 43`)
 
 **Dependencies:**
 
