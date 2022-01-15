@@ -13,9 +13,9 @@ Alternatively, add a format to the command to download it (e.g. `youtube-dl-form
  - paplay
  - notify-send (libnotify-bin)
 
-**My reasons for uploading this script:**
+**My reasons for creating this script:**
 
-I'd be happy to receive help. I'm new to scripting. This is a script I wrote and have recently been working on because I personally use it often. I often have to download videos or audio for work or personal use. I have very limited bandwidth, which makes downloading preferable to streaming, and it also makes format selection essential.
+I often used YouTube videos or audio for work as a teacher. Downloading was essential because I oftern didn't have access to an internet connection in class. When I had very limited bandwidth during lesson preparation, youtube-dl was the most efficient way to download videos. I created this script just for fun, and it did make some things about youtube-dl easier.
 
 **TO-CODE/WISH LIST:**
 
